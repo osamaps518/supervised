@@ -1,0 +1,32 @@
+=== Dataset Info ===
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 3150 entries, 0 to 3149
+Data columns (total 13 columns):
+ #   Column                   Non-Null Count  Dtype  
+---  ------                   --------------  -----  
+ 0   ID                       3150 non-null   int64  
+ 1   Call Failure             3150 non-null   int64  
+ 2   Complains                3150 non-null   object 
+ 3   Charge Amount            3150 non-null   int64  
+ 4   Freq. of use             3150 non-null   int64  
+ 5   Freq. of SMS             3150 non-null   int64  
+ 6   Distinct Called Numbers  3150 non-null   int64  
+ 7   Age Group                3150 non-null   int64  
+ 8   Plan                     3150 non-null   object 
+ 9   Status                   3150 non-null   object 
+ 10  Age                      3150 non-null   int64  
+ 11  Customer Value           3150 non-null   float64
+ 12  Churn                    3150 non-null   object 
+dtypes: float64(1), int64(8), object(4)
+memory usage: 320.0+ KB
+
+=== Summary Statistics ===
+             ID  Call Failure  Charge Amount  Freq. of use  Freq. of SMS  Distinct Called Numbers    Age Group          Age  Customer Value
+count  3150.000   3150.000000    3150.000000   3150.000000   3150.000000              3150.000000  3150.000000  3150.000000     3150.000000
+mean   1575.500      7.627937     129.882540     69.460635     73.174921                23.509841     2.826032    30.998413      470.972916
+std     909.471      7.263886     102.790931     57.413308    112.237560                17.217337     0.892555     8.831095      517.015433
+min       1.000      0.000000      20.000000      0.000000      0.000000                 0.000000     1.000000    15.000000        0.000000
+25%     788.250      1.000000      50.000000     27.000000      6.000000                10.000000     2.000000    25.000000      113.801250
+50%    1575.500      6.000000     100.000000     54.000000     21.000000                21.000000     3.000000    30.000000      228.480000
+75%    2362.750     12.000000     200.000000     95.000000     87.000000                34.000000     3.000000    30.000000      788.388750
+max    3150.000     36.000000     400.000000    255.000000    522.000000                97.000000     5.000000    55.000000     2165.280000
