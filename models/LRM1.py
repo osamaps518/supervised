@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from models.LinearRegressionModel import LinearRegressionModel
 
 
@@ -8,18 +9,18 @@ def main():
     """
     # Load the prepared data
     print("Loading data...")
-    X_train = np.load('data/X_train.npy')
-    X_test = np.load('data/X_test.npy')
-    y_train = np.load('data/y_train.npy')
-    y_test = np.load('data/y_test.npy')
+    train_df = pd.read_csv('../data/train.csv')
+    test_df  = pd.read_csv('../data/test.csv')
+   
+    independent_features = ['Age', 'Plan_pre-paid', 'Call Failure', 
+                          'Complains', 'Distinct Called Numbers', 'Charge Amount', 
+                          'Freq. of use', 'Status']
     
-        # Diagnostic check 1: Check for NaN values in loaded data
-    print("\nDiagnostic Check 1 - NaN Count:")
-    print(f"X_train NaN count: {np.isnan(X_train).sum()}")
-    print(f"X_test NaN count: {np.isnan(X_test).sum()}")
-    print(f"y_train NaN count: {np.isnan(y_train).sum()}")
-    print(f"y_test NaN count: {np.isnan(y_test).sum()}")
-    
+    X_train = train_df[independent_features]
+    y_train = train_df['Customer Value']
+    X_test = test_df[independent_features]
+    y_test = test_df['Customer Value']
+
     # Create and train LRM1
     print("\nTraining LRM1 model...")
     lrm1 = LinearRegressionModel(model_name="LRM1")

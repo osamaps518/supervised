@@ -169,15 +169,10 @@ def prepare_train_test_split(df):
         tuple: (modified_df, X_train, X_test, y_train, y_test)
     """
     # Drop unnecessary columns and create new DataFrame
-    df_modified = df.drop(['Age Group', 'Plan_post-paid', 'Freq. of SMS'], axis=1)
-    
-    X = df_modified.drop('Churn', axis=1)
-    y = df_modified['Churn']
-    
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+    modified_df = df.drop(['Age Group', 'Plan_post-paid', 'Freq. of SMS'], axis=1)
+    train_df, test_df = train_test_split(modified_df, test_size=0.3, random_state=42)
    
-    # return df_modified, X_train, X_test, y_train, y_test
-    return df_modified, X_train, X_test, y_train, y_test
+    return modified_df, train_df, test_df
 
 def main():
     """
@@ -196,17 +191,15 @@ def main():
     analyze_charge_amounts(df)
     
     # Prepare train-test split and get modified DataFrame
-    df, X_train, X_test, y_train, y_test = prepare_train_test_split(df)
+    df, train_df, test_df = prepare_train_test_split(df)
     
     # Create correlation heatmap (final version with dropped columns)
     plot_correlation_heatmap(df)
     
     # Save splits for later use
     print("\nSaving train-test splits to files...")
-    np.save('data/X_train.npy', X_train)
-    np.save('data/X_test.npy', X_test)
-    np.save('data/y_train.npy', y_train)
-    np.save('data/y_test.npy', y_test)
+    train_df.to_csv('data/train.csv', index=False)
+    test_df.to_csv('data/test.csv', index=False)
     print("Train-test splits saved successfully!")
 
 if __name__ == "__main__":
